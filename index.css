@@ -1,0 +1,30 @@
+body{
+    background-image: url("img3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+.cen{
+    height: 50px;
+    width: 100px;
+    font-size: 15px;
+    
+    color: black;
+}
+
+.cen:hover{
+    background-image: url(img4.gif);
+    color:white;
+    background-size: cover;
+}
+.textcen{
+    height: 25px;
+    width: 200px;
+}
