@@ -43,4 +43,20 @@ inputField.addEventListener("keyup", function(event) {
     });
 
 
+const formText = document.querySelector("#formInput")
+const formButton = document.querySelector("#formButton")
 
+function formSubmit(){
+    let heading2 = document.querySelectorAll('h1')
+    let x = document.getElementById("formInput").value;
+    heading2[3].textContent = x
+}
+formButton.addEventListener('click', formSubmit)
+formText.addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+        formButton.click();
+    // Trigger the button element with a click
+    }
+    
+    });

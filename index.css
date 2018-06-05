@@ -24,7 +24,16 @@ h1{
     color:white;
     background-size: cover;
 }
+
 .textcen{
     height: 25px;
     width: 200px;
+}
+
+#formButton{
+    height: 50px;
+    width: 100px;
+    font-size: 50px;
+    
+    color: black;
 }
