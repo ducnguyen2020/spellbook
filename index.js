@@ -10,8 +10,9 @@ function sayYeah1() {
   }
 
 function sayYeah2() {
-    let heading = document.querySelectorAll('h1')
-    heading[1].textContent = "Changed the second headline"
+    //let heading = document.querySelectorAll('h1')[1]
+    let heading = document.querySelector('h1.special')
+    heading.textContent = "Changed the second headline"
   }
 
 function myFunction(){
