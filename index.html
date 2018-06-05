@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SpellBook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=BioRhyme+Expanded" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 
 </head>
@@ -32,8 +33,22 @@
     <form onsubmit = "return false">
         <input type="text" id = "formInput" class = "textcen"> </input>
        <!-- <input type="button" id = "formButton" >SubmitForm </input>-->
-        <button type = "submit" id ="formButton" > SubmitForm</button>
+        <button type = "submit" id ="formButton" class = "cen" > SubmitForm</button>
     </form>
+<br>
+    <form id ="spellform"> 
+        <input
+          type="text"
+          name="spellName"
+          placeholder="Enter a spell name"
+          autofocus
+          class = "textcen"
+        >
+        <button type="submit" class= "cen">Add</button>
+    </form>
+    
+      <ul id="spells"></ul>
+
     <script src="index.js"></script>
 </body>
 </html>

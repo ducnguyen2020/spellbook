@@ -61,3 +61,19 @@ formText.addEventListener("keyup", function(event) {
     }
     
     });
+
+const spellform = document.querySelector('#spellform')
+
+const spellAdd = function(ev) {
+      ev.preventDefault()
+    
+      const f = ev.target
+      const spellName = f.spellName.value
+    
+      const spellsDiv = document.querySelector('#spells')
+      spellsDiv.innerHTML += `<li>${spellName}</li>`
+    
+      f.reset()
+    }
+    
+    spellform.addEventListener('submit', spellAdd)

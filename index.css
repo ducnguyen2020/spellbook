@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=BioRhyme+Expanded');
+
 body{
     background-image: url("img3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     text-align: center;
+    font-family: 'BioRhyme Expanded', serif;
 }
 
 h1{
@@ -15,7 +19,7 @@ h1{
     height: 50px;
     width: 100px;
     font-size: 15px;
-    
+    background-color: orange;
     color: black;
 }
 
@@ -30,7 +34,13 @@ h1{
     width: 200px;
 }
 
-#formButton{
+
+
+#spells{
+    color: white;
+}
+
+#spellbutton{
     height: 50px;
     width: 100px;
     font-size: 15px;
