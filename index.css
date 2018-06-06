@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=BioRhyme+Expanded');
 
 body{
-    background-image: url("img3.jpg");
+    background-image: url("bamboo2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -12,7 +12,7 @@ body{
 h1{
     text-align: center;
     font-size: 40px;
-    color: white;
+    color: green;
 }
 
 .cen{
