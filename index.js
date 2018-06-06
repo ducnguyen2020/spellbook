@@ -66,14 +66,45 @@ const spellform = document.querySelector('#spellform')
 
 const spellAdd = function(ev) {
       ev.preventDefault()
-    
+
       const f = ev.target
       const spellName = f.spellName.value
     
       const spellsDiv = document.querySelector('#spells')
-      spellsDiv.innerHTML += `<li>${spellName}</li>`
+      const spellDes = f.spellDescription.value
+
+      //spellsDiv.innerHTML += `<li>${spellName} : ${spellDes}</li>`
+      let textnode1 = document.createTextNode(spellName);
+      let textnode2 = document.createTextNode(spellDes);
+      let textnode3 = document.createTextNode(" : ");
+
+      let node = document.createElement("LI");   
+    
+      let span1 = document.createElement("span")
+      span1.setAttribute("class", "spellclass")
+      let span2 = document.createElement("span")
+      span2.setAttribute("class", "desclass")
+      let span3 = document.createElement("span")
+      span3.setAttribute("class", "span3class")
+
+     
+      span1.appendChild(textnode1);
+      span2.appendChild(textnode2);
+      span3.appendChild(textnode3);
+
+      node.appendChild(span1);  
+      node.appendChild(span3);
+      node.appendChild(span2);
+    
+
+      
+      spellsDiv.appendChild(node);
+
     
       f.reset()
     }
+
     
-    spellform.addEventListener('submit', spellAdd)
+    
+spellform.addEventListener('submit', spellAdd)
+

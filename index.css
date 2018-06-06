@@ -21,17 +21,20 @@ h1{
     font-size: 15px;
     background-color: orange;
     color: black;
+
+
 }
 
 .cen:hover{
     background-image: url(img4.gif);
-    color:white;
+    color: white;
     background-size: cover;
 }
 
 .textcen{
     height: 25px;
     width: 200px;
+    opacity: 0.8;
 }
 
 
@@ -46,4 +49,45 @@ h1{
     font-size: 15px;
     
     color: black;
+}
+
+main {
+    box-sizing: border-box;
+    background-image: url(imgparch.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50vw;
+    margin-left: 10vw;
+    height: calc(100vh - 18.5vw - 4rem);
+    overflow-y: scroll;
+    font-family: "Homemade Apple", cursive;
+    font-size: 2rem;
+    color: rgba(100, 50, 0, 0.8);
+    padding: 1.5rem 4rem;
+    box-shadow: 1px 1px 15px  rgba(0,0,0,0.4);
+    text-align: left;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+  }
+
+.spellclass{
+    color:black;
+}
+
+.desclass{
+    color: purple;
+}
+
+.span3class{
+    color: red;
+}
+
+ul.a {
+    background-color: rgba(204,229,255,0.4);
+    list-style-type: square;
+    
+    
 }
