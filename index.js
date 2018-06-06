@@ -64,41 +64,45 @@ formText.addEventListener("keyup", function(event) {
 
 const spellform = document.querySelector('#spellform')
 
-const spellAdd = function(ev) {
+const handleSubmit = function(ev) {
       ev.preventDefault()
 
       const f = ev.target
       const spellName = f.spellName.value
     
-      const spellsDiv = document.querySelector('#spells')
+      const list = document.querySelector('#spells')
       const spellDes = f.spellDescription.value
+      const level = f.level.value
 
       //spellsDiv.innerHTML += `<li>${spellName} : ${spellDes}</li>`
+      /*
       let textnode1 = document.createTextNode(spellName);
       let textnode2 = document.createTextNode(spellDes);
       let textnode3 = document.createTextNode(" : ");
+    */
 
       let node = document.createElement("LI");   
-    
-      let span1 = document.createElement("span")
-      span1.setAttribute("class", "spellclass")
+      node.classList.add("spell")
+      let namespan = document.createElement("span")
+      //span1.setAttribute("class", "spellclass")
+      namespan.classList.add("spellclass")
       let span2 = document.createElement("span")
       span2.setAttribute("class", "desclass")
       let span3 = document.createElement("span")
       span3.setAttribute("class", "span3class")
 
      
-      span1.appendChild(textnode1);
-      span2.appendChild(textnode2);
-      span3.appendChild(textnode3);
+      namespan.textContent= spellName;
+      span2.textContent=spellDes;
+      span3.textContent=" : ";
 
-      node.appendChild(span1);  
+      node.appendChild(namespan);  
       node.appendChild(span3);
       node.appendChild(span2);
     
-
+      namespan.setAttribute('title',spellName) //so that it shows the full spellName when you roll the mouse into the name
       
-      spellsDiv.appendChild(node);
+      list.appendChild(node);
 
     
       f.reset()
@@ -106,5 +110,5 @@ const spellAdd = function(ev) {
 
     
     
-spellform.addEventListener('submit', spellAdd)
+spellform.addEventListener('submit', handleSubmit)
 

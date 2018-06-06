@@ -10,7 +10,9 @@
 
 </head>
 <body>
-    <h1>SpellBook</h1>
+    <img src="panda.png" id ="panda" alt ="">
+    <img src="panda2.png" id ="panda2" alt ="">
+    <h1 id ="pandatitle"><em>Panda Spell Book</em></h1>
     <h1 class ="special">Test 2</h1>
     <h1>Test 3</h1>
     <h1>Test 4</h1>
@@ -49,8 +51,17 @@
         <input 
             type="text"
             name = "spellDescription"
-            placeholder = "Enter spell spell description"
+            placeholder = "Enter spell description"
             class = "textcen"
+        >
+
+        <input 
+            type="number"
+            name = "level"
+            placeholder = "Enter spell level"
+            class = "textcen small"
+            min = 1
+            max = 20
         >
         <button type="submit" class= "cen">Add</button>
 

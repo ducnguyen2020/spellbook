@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=BioRhyme+Expanded');
-
+#pandatitle{
+    font-size: 50px;
+}
 body{
     background-image: url("bamboo2.jpg");
     background-repeat: no-repeat;
@@ -8,6 +10,21 @@ body{
     text-align: center;
     font-family: 'BioRhyme Expanded', serif;
 }
+
+img#panda{
+    position: absolute;
+    right: 5vw;
+    top: 15vw;
+    width: 30vw;
+}
+
+img#panda2{
+    position: absolute;
+    left: 5vw;
+    top: 30vw;
+    width: 30vw;
+}
+
 
 h1{
     text-align: center;
@@ -41,6 +58,7 @@ h1{
 
 #spells{
     color: white;
+    padding-left: 0;
 }
 
 #spellbutton{
@@ -75,6 +93,11 @@ main {
 
 .spellclass{
     color:black;
+    text-decoration: underline;
+    width:80%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    padding-left: 0.1em;
 }
 
 .desclass{
@@ -90,4 +113,9 @@ ul.a {
     list-style-type: square;
     
     
+}
+
+.spell{
+    display: flex;
+    justify-content: space-between;
 }
