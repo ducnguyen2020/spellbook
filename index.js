@@ -62,63 +62,61 @@ formText.addEventListener("keyup", function(event) {
     
     });
 
-const spellform = document.querySelector('#spellform')
 
-const renderProperty = function(name, value){
-    let el = document.createElement("span")
-    el.classList.add(name)
-    el.textContent= value;
-    el.setAttribute('title',value)
-    return el
-}
 
-const handleSubmit = function(ev) {
-      ev.preventDefault()
-
-      const f = ev.target
-      const spellName = f.spellName.value
-    
-      const list = document.querySelector('#spells')
-      const spellDes = f.spellDescription.value
-      const level = f.level.value
-
-      //spellsDiv.innerHTML += `<li>${spellName} : ${spellDes}</li>`
-      /*
-      let textnode1 = document.createTextNode(spellName);
-      let textnode2 = document.createTextNode(spellDes);
-      let textnode3 = document.createTextNode(" : ");
-    */
-
-      let node = document.createElement("LI");   
-      node.classList.add("spell")
+    const app = {
+        init: function() {
+          const form = document.querySelector('#spellform')
+          form.addEventListener('submit', ev => {
+            this.handleSubmit(ev)
+          })
+        },
       
-
-      /*
-      let span2 = document.createElement("span")
-      span2.setAttribute("class", "desclass")
-      span2.textContent=spellDes;*/
-
-     
-
-      namespan= renderProperty("spellclass",spellName)
-      span2 = renderProperty("desclass",spellDes)
-      span3 = renderProperty("span3class"," : ")
+        renderProperty: function(name, value) {
+          const el = document.createElement('span')
+          el.textContent = value
+          el.classList.add(name)
+          return el
+        },
       
-     
-
-      node.appendChild(namespan);  
-      node.appendChild(span3);
-      node.appendChild(span2);
-    
-     // namespan.setAttribute('title',spellName) //so that it shows the full spellName when you roll the mouse into the name
+        renderItem: function(spell) {
+          // ['name', 'level']
+          properties = Object.keys(spell)
       
-      list.appendChild(node);
-
-    
-      f.reset()
-    }
-
-    
-    
-spellform.addEventListener('submit', handleSubmit)
-
+          // collect an array of renderProperty's return values
+          // (an array of <span> elements)
+          const childElements = properties.map(property => {
+            return this.renderProperty(property, spell[property])
+          })
+      
+          const item = document.createElement('li')
+          item.classList.add('spell')
+      
+          // append each <span> to the <li>
+          childElements.forEach(el => {
+            item.appendChild(el)
+          })
+      
+          return item
+        },
+      
+        handleSubmit: function(ev) {
+          ev.preventDefault()
+      
+          const f = ev.target
+      
+          const spell = {
+            name: f.spellName.value,
+            level: f.level.value,
+          }
+      
+          const item = this.renderItem(spell)
+      
+          const list = document.querySelector('#spells')
+          list.appendChild(item)
+      
+          f.reset()
+        },
+      }
+      
+      app.init()

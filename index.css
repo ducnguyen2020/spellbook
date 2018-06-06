@@ -104,10 +104,6 @@ main {
     color: purple;
 }
 
-.span3class{
-    color: red;
-}
-
 ul.a {
     background-color: rgba(204,229,255,0.4);
     list-style-type: square;
@@ -119,3 +115,17 @@ ul.a {
     display: flex;
     justify-content: space-between;
 }
+
+.name{
+    color:black;
+}
+
+.level{
+    color:red;
+}
+
+input.small {
+    height: 25px;
+    width: 50px;
+    opacity: 0.8;
+}  
