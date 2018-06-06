@@ -64,6 +64,14 @@ formText.addEventListener("keyup", function(event) {
 
 const spellform = document.querySelector('#spellform')
 
+const renderProperty = function(name, value){
+    let el = document.createElement("span")
+    el.classList.add(name)
+    el.textContent= value;
+    el.setAttribute('title',value)
+    return el
+}
+
 const handleSubmit = function(ev) {
       ev.preventDefault()
 
@@ -83,24 +91,26 @@ const handleSubmit = function(ev) {
 
       let node = document.createElement("LI");   
       node.classList.add("spell")
-      let namespan = document.createElement("span")
-      //span1.setAttribute("class", "spellclass")
-      namespan.classList.add("spellclass")
+      
+
+      /*
       let span2 = document.createElement("span")
       span2.setAttribute("class", "desclass")
-      let span3 = document.createElement("span")
-      span3.setAttribute("class", "span3class")
+      span2.textContent=spellDes;*/
 
      
-      namespan.textContent= spellName;
-      span2.textContent=spellDes;
-      span3.textContent=" : ";
+
+      namespan= renderProperty("spellclass",spellName)
+      span2 = renderProperty("desclass",spellDes)
+      span3 = renderProperty("span3class"," : ")
+      
+     
 
       node.appendChild(namespan);  
       node.appendChild(span3);
       node.appendChild(span2);
     
-      namespan.setAttribute('title',spellName) //so that it shows the full spellName when you roll the mouse into the name
+     // namespan.setAttribute('title',spellName) //so that it shows the full spellName when you roll the mouse into the name
       
       list.appendChild(node);
 
