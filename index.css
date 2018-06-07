@@ -19,6 +19,27 @@
     
   }
 
+.fav{
+    animation-name: changeColor;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    color: white;
+}
+
+
+@keyframes changeColor {
+    0% {
+      background-color: #900;
+    }
+    50% {
+      background-color: #090;
+    }
+    100% {
+      background-color: #900;
+    }
+  }
+
+
 @-webkit-keyframes colorchange {
     0% {
       

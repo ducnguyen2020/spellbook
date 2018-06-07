@@ -97,8 +97,10 @@ formText.addEventListener("keyup", function(event) {
     
         properties.forEach(property => {
           const el = item.querySelector(`.${property}`)
-          el.textContent = spell[property]
-          el.setAttribute('title', spell[property])
+          if (el){
+           el.textContent = spell[property]
+           el.setAttribute('title', spell[property])
+          }
         })
     
         // add the delete button
@@ -115,7 +117,7 @@ formText.addEventListener("keyup", function(event) {
           .querySelector('button.fav')
           .addEventListener(
             'click',
-            this.favFunc.bind(this)
+            this.toggleFav.bind(this,spell)
           )
 
 
@@ -167,8 +169,12 @@ formText.addEventListener("keyup", function(event) {
       },
     
 
-      favFunc: function(){
-        console.log(this.parentNode.parentNode)
+      toggleFav: function(spell,ev){
+        // ev.target.parentNode.classList.add("changelist")
+        const button = ev.target
+        const item = button.closest('.spell')
+        spell.favorite = item.classList.toggle('fav')
+
       },
 
       handleSubmit: function(ev) {
@@ -177,6 +183,7 @@ formText.addEventListener("keyup", function(event) {
         const spell = {
           name: f.spellName.value,
           level: f.level.value,
+          favorite: false,
         }
     
         this.spells.push(spell)
