@@ -8,13 +8,13 @@ const spellArray = []
 
 function sayYeah1() {
     let heading = document.querySelector('h1')
-    heading.textContent = "Changed the first headline"
+    heading.textContent = "Changed"
   }
 
 function sayYeah2() {
     //let heading = document.querySelectorAll('h1')[1]
     let heading = document.querySelector('h1.special')
-    heading.textContent = "Changed the second headline"
+    heading.textContent = "Changed"
   }
 
 function myFunction(){
@@ -99,11 +99,48 @@ formText.addEventListener("keyup", function(event) {
             item.appendChild(el)
           })
       
+
+          if (spell.name.includes('chop') || spell.name.includes('punch')){
+            //  <img src="panda.png" id ="panda" alt ="">
+
+            const chopmove = document.createElement('img')
+            chopmove.setAttribute('src',`panda3.gif`)
+            chopmove.setAttribute('id','panda3')
+            chopmove.setAttribute('class','listimg')
+            chopmove.setAttribute('alt', "")
+            item.appendChild(chopmove)
+          }
+          
+          if (spell.name.includes('eat') || spell.name.includes('roll')){
+            //  <img src="panda.png" id ="panda" alt ="">
+
+            const eatmove = document.createElement('img')
+            eatmove.setAttribute('src',`pandaeat.gif`)
+            eatmove.setAttribute('id','pandaeat')
+            eatmove.setAttribute('class','listimg')
+            eatmove.setAttribute('alt', "")
+            item.appendChild(eatmove)
+          }
+
+          if (spell.name.includes('shower') || spell.name.includes('bath')){
+            //  <img src="panda.png" id ="panda" alt ="">
+
+            const showermove = document.createElement('img')
+            showermove.setAttribute('src',`showerpanda.gif`)
+            showermove.setAttribute('id','showerpanda')
+            showermove.setAttribute('class','listimg')
+            showermove.setAttribute('alt', "")
+            item.appendChild(showermove)
+          }
+
+
           const rmvel = document.createElement('button')
           rmvel.setAttribute('onclick',`delFunction(this,'${spell.name}','${spell.level}')`)
           rmvel.textContent = "Remove"
           rmvel.setAttribute('class','delBut')
           item.appendChild(rmvel)
+
+          
           console.log(rmvel)
           return item
         },
@@ -117,7 +154,9 @@ formText.addEventListener("keyup", function(event) {
             name: f.spellName.value,
             level: `Level ${f.level.value}`,
           }
-      
+          
+          
+
           const item = this.renderItem(spell)
           spellArray.push(spell)
 

@@ -1,7 +1,83 @@
 @import url('https://fonts.googleapis.com/css?family=BioRhyme+Expanded');
-#pandatitle{
+
+
+#pandatitle {
+      
+    font-style: italic bold;
     font-size: 50px;
-}
+    width:100%;
+    
+
+    text-align: center;
+    
+    color:#313131;
+    font-size:45px;
+    font-weight: bold;
+
+    -webkit-animation:colorchange 20s infinite alternate;
+    
+    
+  }
+
+@-webkit-keyframes colorchange {
+    0% {
+      
+      color: blue;
+    }
+    
+    10% {
+      
+      color: #8e44ad;
+    }
+    
+    20% {
+      
+      color: #1abc9c;
+    }
+    
+    30% {
+      
+      color: #d35400;
+    }
+    
+    40% {
+      
+      color: blue;
+    }
+    
+    50% {
+      
+      color: #34495e;
+    }
+    
+    60% {
+      
+      color: blue;
+    }
+    
+    70% {
+      
+      color: #2980b9;
+    }
+    80% {
+   
+      color: #f1c40f;
+    }
+    
+    90% {
+   
+      color: #2980b9;
+    }
+    
+    100% {
+      
+      color: pink;
+    }
+  }
+
+
+
+
 body{
     background-image: url("bamboo2.jpg");
     background-repeat: no-repeat;
@@ -12,24 +88,32 @@ body{
 }
 
 img#panda{
-    position: absolute;
+    position: fixed;
     right: 5vw;
-    top: 15vw;
-    width: 30vw;
+    top: 10vw;
+    width: 25vw;
+    z-index: 5;
 }
 
 img#panda2{
     position: absolute;
-    left: 5vw;
-    top: 30vw;
+    left: 8vw;
+    top: 20vw;
     width: 30vw;
 }
 
+img#tiger{
+    position: absolute;
+    right: 5vw;
+    top: 50vw;
+    width: 25vw;
+}
 
 h1{
     text-align: center;
     font-size: 40px;
     color: green;
+    z-index: 10;
 }
 
 .cen{
@@ -59,6 +143,7 @@ h1{
 #spells{
     color: white;
     padding-left: 0;
+    text-align: center;
     
 }
 
@@ -84,7 +169,7 @@ main {
     color: rgba(100, 50, 0, 0.8);
     padding: 1.5rem 4rem;
     box-shadow: 1px 1px 15px  rgba(0,0,0,0.4);
-    text-align: left;
+    text-align: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -108,8 +193,8 @@ main {
 ul.a {
     background-color: rgba(204,229,255,0.4);
     list-style-type: square;
-    
-    
+    align-self: center;
+    align-content: center;
 }
 
 .spell{
@@ -119,10 +204,13 @@ ul.a {
 
 .name{
     color:black;
+    align-self: center;
+    text-align: center
 }
 
 .level{
     color:red;
+    align-self: center;
 }
 
 input.small {
@@ -143,4 +231,9 @@ input.small {
     background-image: url(explode.gif);
     background-size: cover;
     color: white;
+}
+
+.listimg{
+    width: 150px;
+    height: 150px;
 }
