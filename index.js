@@ -72,7 +72,7 @@ formText.addEventListener("keyup", function(event) {
       init: function() {
         this.spells = []
         this.template = document.querySelector('.spell.template')
-    
+        this.list = document.querySelector('#spells')
         const form = document.querySelector('#spellform')
         form.addEventListener('submit', (ev) => {
           ev.preventDefault()
@@ -120,6 +120,12 @@ formText.addEventListener("keyup", function(event) {
             this.toggleFav.bind(this,spell)
           )
 
+        item
+          .querySelector('button.up')
+          .addEventListener(
+            'click',
+            this.moveUp.bind(this, spell)
+          )
 
           if (spell.name.includes('chop') || spell.name.includes('punch')){
             //  <img src="panda.png" id ="panda" alt ="">
@@ -168,6 +174,25 @@ formText.addEventListener("keyup", function(event) {
         this.spells.splice(i, 1)
       },
     
+      moveUp: function(spell, ev) {
+        // Find the <li>
+        const button = ev.target
+        const item = button.closest('.spell')
+    
+        // Find it in the array
+        const i = this.spells.indexOf(spell)
+    
+        // Only move it if it's not already first
+        if (i > 0) {
+          // Move it on the page
+        this.list.insertBefore(item, item.previousSibling)
+    
+        // Move it in the array
+        const previousSpell = this.spells[i - 1]
+        this.spells[i - 1] = spell
+        this.spells[i] = previousSpell
+        }
+      },
 
       toggleFav: function(spell,ev){
         // ev.target.parentNode.classList.add("changelist")
@@ -190,10 +215,11 @@ formText.addEventListener("keyup", function(event) {
     
         const item = this.renderItem(spell)
     
-        const list = document.querySelector('#spells')
-        list.appendChild(item)
+        // const list = document.querySelector('#spells')
+        this.list.appendChild(item)
     
         f.reset()
+        
         f.spellName.focus()
       },
     }

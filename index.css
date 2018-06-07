@@ -262,3 +262,7 @@ input.small {
 .template {
     display: none;
   }
+
+button.move{
+    background-color: yellow
+}
