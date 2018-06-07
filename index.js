@@ -68,8 +68,8 @@ formText.addEventListener("keyup", function(event) {
 
     
 
-    const app = {
-      init: function() {
+    class App {
+      constructor(){
         this.spells = []
         this.template = document.querySelector('.spell.template')
         this.list = document.querySelector('#spells')
@@ -78,17 +78,17 @@ formText.addEventListener("keyup", function(event) {
           ev.preventDefault()
           this.handleSubmit(ev)
         })
-      },
+      }
     
-      renderProperty: function(name, value) {
+      renderProperty(name, value) {
         const el = document.createElement('span')
         el.classList.add(name)
         el.textContent = value
         el.setAttribute('title', value)
         return el
-      },
+      }
     
-      renderItem: function(spell) {
+      renderItem(spell) {
         const item = this.template.cloneNode(true)
         item.classList.remove('template')
     
@@ -160,10 +160,10 @@ formText.addEventListener("keyup", function(event) {
             item.appendChild(showermove)
           }
         return item
-      },
+      }
     
 
-      removeSpell: function(spell, ev) {
+      removeSpell(spell, ev) {
         // Remove from the DOM
         const button = ev.target
         const item = button.closest('.spell')
@@ -172,9 +172,9 @@ formText.addEventListener("keyup", function(event) {
         // Remove from the array
         const i = this.spells.indexOf(spell)
         this.spells.splice(i, 1)
-      },
+      }
     
-      moveUp: function(spell, ev) {
+      moveUp(spell, ev) {
         // Find the <li>
         const button = ev.target
         const item = button.closest('.spell')
@@ -192,17 +192,17 @@ formText.addEventListener("keyup", function(event) {
         this.spells[i - 1] = spell
         this.spells[i] = previousSpell
         }
-      },
+      }
 
-      toggleFav: function(spell,ev){
+      toggleFav(spell,ev){
         // ev.target.parentNode.classList.add("changelist")
         const button = ev.target
         const item = button.closest('.spell')
         spell.favorite = item.classList.toggle('fav')
 
-      },
+      }
 
-      handleSubmit: function(ev) {
+      handleSubmit(ev) {
         const f = ev.target
     
         const spell = {
@@ -221,8 +221,8 @@ formText.addEventListener("keyup", function(event) {
         f.reset()
         
         f.spellName.focus()
-      },
+      }
     }
     
-    app.init()
+    const app = new App()
 
