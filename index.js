@@ -4,7 +4,7 @@ const button2 = document.querySelector(".but2")
 const inputField = document.querySelector("input")
 const submit1 = document.querySelector("#submit")
 
-const spellArray = []
+
 
 function sayYeah1() {
     let heading = document.querySelector('h1')
@@ -78,8 +78,28 @@ formText.addEventListener("keyup", function(event) {
           ev.preventDefault()
           this.handleSubmit(ev)
         })
+        this.load()
       }
     
+      load() {
+        // Read JSON from localStorage
+        const spellJSON = localStorage.getItem('spells')
+    
+        // Convert JSON back into an array
+        const spellArray = JSON.parse(spellJSON)
+    
+        // Load the spells back into the app
+        if (spellArray) {
+          spellArray.forEach(this.addSpell.bind(this))
+        }
+      }
+
+
+      save(){
+        localStorage.setItem('spells',JSON.stringify(this.spells))
+      }
+
+
       renderProperty(name, value) {
         const el = document.createElement('span')
         el.classList.add(name)
@@ -102,6 +122,14 @@ formText.addEventListener("keyup", function(event) {
            el.setAttribute('title', spell[property])
           }
         })
+
+
+
+        if (spell.favorite) {
+          item.classList.add('fav')
+        }
+
+        //
     
         // add the delete button
         item
@@ -172,6 +200,7 @@ formText.addEventListener("keyup", function(event) {
         // Remove from the array
         const i = this.spells.indexOf(spell)
         this.spells.splice(i, 1)
+        this.save()
       }
     
       moveUp(spell, ev) {
@@ -192,6 +221,7 @@ formText.addEventListener("keyup", function(event) {
         this.spells[i - 1] = spell
         this.spells[i] = previousSpell
         }
+        this.save()
       }
 
       toggleFav(spell,ev){
@@ -199,7 +229,14 @@ formText.addEventListener("keyup", function(event) {
         const button = ev.target
         const item = button.closest('.spell')
         spell.favorite = item.classList.toggle('fav')
+        this.save()
+      }
 
+
+      addSpell(spell) {
+        this.spells.push(spell)
+        const item = this.renderItem(spell)
+        this.list.appendChild(item)
       }
 
       handleSubmit(ev) {
@@ -210,14 +247,12 @@ formText.addEventListener("keyup", function(event) {
           level: f.level.value,
           favorite: false,
         }
+
+        this.addSpell(spell)
+        this.save()
     
-        this.spells.push(spell)
-    
-        const item = this.renderItem(spell)
-    
-        // const list = document.querySelector('#spells')
-        this.list.appendChild(item)
-    
+
+        
         f.reset()
         
         f.spellName.focus()
