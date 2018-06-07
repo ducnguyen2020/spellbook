@@ -4,7 +4,7 @@ const button2 = document.querySelector(".but2")
 const inputField = document.querySelector("input")
 const submit1 = document.querySelector("#submit")
 
-const spellarray = []
+const spellArray = []
 
 function sayYeah1() {
     let heading = document.querySelector('h1')
@@ -70,7 +70,7 @@ formText.addEventListener("keyup", function(event) {
         init: function() {
           const form = document.querySelector('#spellform')
           form.addEventListener('submit', ev => {
-            this.handleSubmit(ev)
+            this.handleSubmit(ev);
           })
         },
       
@@ -99,6 +99,12 @@ formText.addEventListener("keyup", function(event) {
             item.appendChild(el)
           })
       
+          const rmvel = document.createElement('button')
+          rmvel.setAttribute('onclick',`delFunction(this,'${spell.name}','${spell.level}')`)
+          rmvel.textContent = "Remove"
+          rmvel.setAttribute('class','delBut')
+          item.appendChild(rmvel)
+          console.log(rmvel)
           return item
         },
       
@@ -109,19 +115,29 @@ formText.addEventListener("keyup", function(event) {
       
           const spell = {
             name: f.spellName.value,
-            level: f.level.value,
+            level: `Level ${f.level.value}`,
           }
       
           const item = this.renderItem(spell)
-          spellarray.push(spell)
+          spellArray.push(spell)
 
           const list = document.querySelector('#spells')
           list.appendChild(item)
-          console.log(spellarray)
-      
+
+          console.log(spellArray)
           f.reset()
         },
       }
       
+      const delFunction = function(currentEl,name1,lvl1){
+        currentEl.parentNode.parentNode.removeChild(currentEl.parentNode);
+        for (var i = 0; i < spellArray.length; i++) {
+            if (spellArray[i].name == name1 && spellArray[i].level == lvl1) {
+                spellArray.splice(i, 1);
+            }
+          }
+        console.log(spellArray)
+      }
+
       app.init()
 
