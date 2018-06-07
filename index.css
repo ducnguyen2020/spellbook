@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=BioRhyme+Expanded');
+@import url('https://fonts.googleapis.com/css?family=Jua');
 
 
 #pandatitle {
-      
+    font-family: 'Jua', sans-serif;
     font-style: italic bold;
-    font-size: 50px;
-    width:100%;
+    font-size: 80px;
     
 
     text-align: center;
     
     color:#313131;
-    font-size:45px;
+
     font-weight: bold;
 
     -webkit-animation:colorchange 20s infinite alternate;
@@ -90,8 +90,8 @@ body{
 img#panda{
     position: fixed;
     right: 5vw;
-    top: 10vw;
-    width: 25vw;
+    top: 8vw;
+    width: 20vw;
     z-index: 5;
 }
 
@@ -105,7 +105,7 @@ img#panda2{
 img#tiger{
     position: absolute;
     right: 5vw;
-    top: 50vw;
+    top: 25vw;
     width: 25vw;
 }
 
