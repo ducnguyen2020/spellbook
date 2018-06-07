@@ -1,8 +1,10 @@
-console.log('testing')
+
 const button1 = document.querySelector(".but1")
 const button2 = document.querySelector(".but2")
 const inputField = document.querySelector("input")
 const submit1 = document.querySelector("#submit")
+
+const spellarray = []
 
 function sayYeah1() {
     let heading = document.querySelector('h1')
@@ -111,12 +113,15 @@ formText.addEventListener("keyup", function(event) {
           }
       
           const item = this.renderItem(spell)
-      
+          spellarray.push(spell)
+
           const list = document.querySelector('#spells')
           list.appendChild(item)
+          console.log(spellarray)
       
           f.reset()
         },
       }
       
       app.init()
+
