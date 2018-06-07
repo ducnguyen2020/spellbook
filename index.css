@@ -224,7 +224,7 @@ input.small {
     width:70px;
     align-self: center;
     align-content: center;
-    background-color:grey;
+    background-color:red;
 }
 
 .delBut:hover{
@@ -234,6 +234,10 @@ input.small {
 }
 
 .listimg{
-    width: 150px;
+    max-width: 300px;
     height: 150px;
 }
+
+.template {
+    display: none;
+  }

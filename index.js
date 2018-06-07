@@ -66,39 +66,58 @@ formText.addEventListener("keyup", function(event) {
 
 
 
+    
+
     const app = {
-        init: function() {
-          const form = document.querySelector('#spellform')
-          form.addEventListener('submit', ev => {
-            this.handleSubmit(ev);
-          })
-        },
-      
-        renderProperty: function(name, value) {
-          const el = document.createElement('span')
-          el.textContent = value
-          el.classList.add(name)
-          return el
-        },
-      
-        renderItem: function(spell) {
-          // ['name', 'level']
-          properties = Object.keys(spell)
-      
-          // collect an array of renderProperty's return values
-          // (an array of <span> elements)
-          const childElements = properties.map(property => {
-            return this.renderProperty(property, spell[property])
-          })
-      
-          const item = document.createElement('li')
-          item.classList.add('spell')
-      
-          // append each <span> to the <li>
-          childElements.forEach(el => {
-            item.appendChild(el)
-          })
-      
+      init: function() {
+        this.spells = []
+        this.template = document.querySelector('.spell.template')
+    
+        const form = document.querySelector('#spellform')
+        form.addEventListener('submit', (ev) => {
+          ev.preventDefault()
+          this.handleSubmit(ev)
+        })
+      },
+    
+      renderProperty: function(name, value) {
+        const el = document.createElement('span')
+        el.classList.add(name)
+        el.textContent = value
+        el.setAttribute('title', value)
+        return el
+      },
+    
+      renderItem: function(spell) {
+        const item = this.template.cloneNode(true)
+        item.classList.remove('template')
+    
+        // ['name', 'level']
+        const properties = Object.keys(spell)
+    
+        properties.forEach(property => {
+          const el = item.querySelector(`.${property}`)
+          el.textContent = spell[property]
+          el.setAttribute('title', spell[property])
+        })
+    
+        // add the delete button
+        item
+          .querySelector('button.delete')
+          .addEventListener(
+            'click',
+            this.removeSpell.bind(this, spell)
+          )
+    
+        // add the fav button
+
+        item
+          .querySelector('button.fav')
+          .addEventListener(
+            'click',
+            this.favFunc.bind(this)
+          )
+
 
           if (spell.name.includes('chop') || spell.name.includes('punch')){
             //  <img src="panda.png" id ="panda" alt ="">
@@ -132,51 +151,45 @@ formText.addEventListener("keyup", function(event) {
             showermove.setAttribute('alt', "")
             item.appendChild(showermove)
           }
+        return item
+      },
+    
 
+      removeSpell: function(spell, ev) {
+        // Remove from the DOM
+        const button = ev.target
+        const item = button.closest('.spell')
+        item.parentNode.removeChild(item)
+    
+        // Remove from the array
+        const i = this.spells.indexOf(spell)
+        this.spells.splice(i, 1)
+      },
+    
 
-          const rmvel = document.createElement('button')
-          rmvel.setAttribute('onclick',`delFunction(this,'${spell.name}','${spell.level}')`)
-          rmvel.textContent = "Remove"
-          rmvel.setAttribute('class','delBut')
-          item.appendChild(rmvel)
+      favFunc: function(){
+        console.log(this.parentNode.parentNode)
+      },
 
-          
-          console.log(rmvel)
-          return item
-        },
-      
-        handleSubmit: function(ev) {
-          ev.preventDefault()
-      
-          const f = ev.target
-      
-          const spell = {
-            name: f.spellName.value,
-            level: `Level ${f.level.value}`,
-          }
-          
-          
-
-          const item = this.renderItem(spell)
-          spellArray.push(spell)
-
-          const list = document.querySelector('#spells')
-          list.appendChild(item)
-
-          console.log(spellArray)
-          f.reset()
-        },
-      }
-      
-      const delFunction = function(currentEl,name1,lvl1){
-        currentEl.parentNode.parentNode.removeChild(currentEl.parentNode);
-        for (var i = 0; i < spellArray.length; i++) {
-            if (spellArray[i].name == name1 && spellArray[i].level == lvl1) {
-                spellArray.splice(i, 1);
-            }
-          }
-        console.log(spellArray)
-      }
-
-      app.init()
+      handleSubmit: function(ev) {
+        const f = ev.target
+    
+        const spell = {
+          name: f.spellName.value,
+          level: f.level.value,
+        }
+    
+        this.spells.push(spell)
+    
+        const item = this.renderItem(spell)
+    
+        const list = document.querySelector('#spells')
+        list.appendChild(item)
+    
+        f.reset()
+        f.spellName.focus()
+      },
+    }
+    
+    app.init()
 
